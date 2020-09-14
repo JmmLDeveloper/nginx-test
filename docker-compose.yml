@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  node_1: 
+    build:
+      context: ./node-hello
+      dockerfile: ./Dockerfile
+    image: hello-node
+    container_name: hello_node_1
+    environment:
+      - SERVER_MESSAGE=app 1
+    ports:
+      - "8001:8080"
+
+  node_2: 
+    build:
+      context: ./node-hello
+      dockerfile: ./Dockerfile
+    image: hello-node
+    container_name: hello_node_2
+    environment:
+      - SERVER_MESSAGE=app 2
+    ports:
+      - "8002:8080"
+
+  django_1: 
+    build:
+      context: ./hello_django/
+      dockerfile: ./Dockerfile
+    image: django-hello
+    container_name: hello_django_1
+    environment:
+      - SERVER_MESSAGE=app 3
+    ports:
+      - "8003:8080"
+
+  django_2: 
+    build:
+      context: ./hello_django/
+      dockerfile: ./Dockerfile
+    image: django-hello
+    container_name: hello_django_2
+    environment:
+      - SERVER_MESSAGE=app 4
+    ports:
+      - "8004:8080"
+
+    

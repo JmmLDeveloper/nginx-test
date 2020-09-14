@@ -1,15 +1,16 @@
 const express = require("express")
+const path = require("path")
+
+const SERVER_MESSAGE = process.env.SERVER_MESSAGE || "standard server message"
 
 const app = express()
 
-
-app.get("/node",(req,res)=>{
-  res.send("this is node of node")
-})
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.get("/",(req,res)=>{
-  res.send("hello from node")
+  res.render('index',{message:SERVER_MESSAGE})
 })
-
+ 
 app.listen(8080)
 console.log("node server running")
